@@ -22,9 +22,6 @@
         "laravel/sail": "^1.0.1",
         "mockery/mockery": "^1.4.2",
         "nunomaduro/collision": "^5.0",
-        "pestphp/pest": "^1.3",
-        "pestphp/pest-plugin-laravel": "^1.0",
-        "pestphp/pest-plugin-watch": "1.x-dev",
         "phpunit/phpunit": "^9.3.3"
     },
     "autoload": {
@@ -49,8 +46,7 @@
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
-        ],
-        "pest": "./vendor/bin/pest"
+        ]
     },
     "extra": {
         "laravel": {
