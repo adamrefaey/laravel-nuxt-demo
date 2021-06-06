@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\Register;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +18,5 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::middleware('guest:api')->post('/auth/register', Register::class)->name('register');
