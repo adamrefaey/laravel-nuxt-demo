@@ -33,12 +33,36 @@ export default {
     'bootstrap-vue/nuxt',
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    // https://auth.nuxtjs.org/
+    '@nuxtjs/auth-next',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {},
+  axios: {
+    proxy: true,
+    credentials: true,
+  },
+  proxy: {
+    '/laravel': {
+      target: 'http://laravel-nuxt-demo.test',
+      pathRewrite: { '^/laravel': '/' },
+    },
+  },
+  auth: {
+    strategies: {
+      laravelSanctum: {
+        provider: 'laravel/sanctum',
+        url: 'http://laravel-nuxt-demo.test',
+        endpoints: {
+          login: {
+            url: '/api/login',
+          },
+        },
+      },
+    },
+  },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
