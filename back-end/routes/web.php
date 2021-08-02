@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Auth\Login;
+use App\Http\Controllers\Auth\Logout;
 use App\Http\Controllers\Auth\Register;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +16,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('auth:sanctum', fn () => response()->json(['message' => 'Hello from the back-end!']));
+Route::middleware('guest:sanctum')->group(function () {
+    Route::post('/register', Register::class)->name('register');
+});
 
-Route::middleware('guest:sanctum')->post('/register', Register::class)->name('register');
+Route::middleware('auth:sanctum')->group(function () {
+    Route::post('/logout', Logout::class)->name('logout');
+});
