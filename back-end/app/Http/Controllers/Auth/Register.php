@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Actions\Fortify\CreateNewUser;
 use App\Http\Controllers\Controller;
-use App\Models\User;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class Register extends Controller
@@ -14,9 +15,9 @@ class Register extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function __invoke(Request $request)
+    public function __invoke(Request $request): JsonResponse
     {
-        $user = User::create($request->only(['email', 'name', 'password']));
+        $user = (new CreateNewUser())->create($request->input());
 
         return response()->json(['data' => compact('user')], 201);
     }

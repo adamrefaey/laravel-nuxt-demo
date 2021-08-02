@@ -2,7 +2,6 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth\Register;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,5 +17,3 @@ use App\Http\Controllers\Auth\Register;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-
-Route::middleware('guest:sanctum')->post('/auth/register', Register::class)->name('register');
