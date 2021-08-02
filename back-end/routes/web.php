@@ -13,4 +13,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', fn () => view('welcome'));
+Route::get('auth:sanctum', fn () => response()->json(['message' => 'Hello from the back-end!']));
