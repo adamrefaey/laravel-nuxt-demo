@@ -17,10 +17,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('guest:sanctum')->group(function () {
-    Route::post('/register', Register::class)->name('register');
-    Route::post('/login', Login::class)->name('login');
+    Route::post('register', Register::class)->name('register');
+    Route::post('login', Login::class)->name('login');
 });
 
 Route::middleware('auth:sanctum')->group(function () {
-    Route::post('/logout', Logout::class)->name('logout');
+    Route::post('logout', Logout::class)->name('logout');
 });
